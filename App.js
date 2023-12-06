@@ -1,7 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import CadastroCategoria from "./screens/CadastroCategoria";
+import Home from "./screens/Home";
+import drawerMenu from "./drawerMenu/DrawerMenu";
+import Categoria from "./screens/Categoria";
+import Produtos from "./screens/Produtos";
 
 const Stack = createNativeStackNavigator();
 
@@ -9,13 +12,20 @@ export default function App() {
   return (
 
     <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="DrawerMenu">
     
-      <Stack.Screen
-        name="Login" // refere  ncia a tela para acessar ela
-        component={CadastroCategoria} // é a tela em si
-        options={{title:"CADASTRO"}} // opções para colocar na tela
+    <Stack.Screen
+        name="DrawerMenu"
+        component={drawerMenu}
+        options={{title:'', headerShown:false}}
         />
+
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{title:"HOME"}}
+        />
+
 
     </Stack.Navigator>
     </NavigationContainer>
